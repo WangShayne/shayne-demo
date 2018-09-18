@@ -7,10 +7,14 @@ const app = new Koa()
 const router = new Router()
 
 
-router.post("/webhook",function(ctx,next){
-    console.log(ctx.headers)
-    console.log(ctx.request)
-    ctx.body="接收到请求"
+router.post("/webhook", function (ctx, next) {
+    if (shell.exec('git pull origin master"').code !== 0) {
+        ctx.body = "更新失败!"
+        shell.exit(1);
+    } else {
+        ctx.body = "更新成功!"
+    }
+
     next()
 })
 
