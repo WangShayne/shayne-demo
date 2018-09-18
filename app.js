@@ -8,7 +8,7 @@ const router = new Router()
 
 
 router.post("/webhook", function (ctx, next) {
-    if (shell.exec('git pull origin master"').code !== 0) {
+    if (shell.exec('git pull origin master').code !== 0) {
         ctx.body = "更新失败!"
         shell.exit(1);
     } else {
