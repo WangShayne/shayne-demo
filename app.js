@@ -5,7 +5,7 @@ const Router = require("koa-router")
 const app = new Koa()
 const router = new Router()
 
-app.post("/webhook",function(ctx,next){
+router.post("/webhook",function(ctx,next){
     ctx.body="接收到请求"
     next()
 })
