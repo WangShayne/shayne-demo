@@ -9,6 +9,8 @@ const router = new Router()
 
 router.post("/webhook", function (ctx, next) {
     shell.cd("./")
+    if(process.cwd()== "/root/var/www")   shell.cd("shayne-demo/")
+    shell.echo(process.cwd())
     if (shell.exec('git pull origin master').code !== 0) {
         ctx.body = "更新失败!"
         shell.exit(1);
